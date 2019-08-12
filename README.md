@@ -76,3 +76,8 @@ npm rebuild
 npm run-script package
 ```
 
+### Installing from this fork?
+
+```bash
+sudo install/run.sh
+```
