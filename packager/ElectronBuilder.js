@@ -80,6 +80,7 @@ class ElectronBuilder {
           'CFBundleURLSchemes': ['mailto']
         },
         ignore: ElectronBuilder.packagerIgnoreString(platform, arch),
+        out: '/tmp/build',
         tmpdir: false,
         afterCopy: [serialHooks([
           (buildPath, electronVersion, platform, arch) => {
