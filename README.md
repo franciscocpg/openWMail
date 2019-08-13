@@ -78,6 +78,7 @@ npm run-script package
 
 ### Installing from this fork?
 
+Follow the create `OAuth client ID & secret` steps and then run:
 ```bash
-sudo install/run.sh
+install/run.sh
 ```
