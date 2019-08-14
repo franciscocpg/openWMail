@@ -34,28 +34,23 @@ openWMail, like wmail before it, is licensed under the [Mozilla Public License 2
 
 ### Building from source
 
-Feeling brave and want to build from source? Here's what you need to do
+#### Creating credentials
 
-Firstly you need to get an OAuth client ID and secret from Google.
-Visit https://console.developers.google.com to get started.
-You'll need to [setup your OAuth Client ID](https://console.developers.google.com/apis/credentials) and enable the [Gmail](https://console.developers.google.com/apis/api/gmail/overview), [Google+](https://console.developers.google.com/apis/api/plus/overview) and [Identity Toolkit](https://console.developers.google.com/apis/api/identitytoolkit/overview) APIs.
+1. [Create a new gcloud project](https://cloud.google.com/resource-manager/docs/creating-managing-projects)
+2. [Create OAuth credentials for this project](https://support.google.com/cloud/answer/6158849?hl=pt-BR)
+3. Next create `src/shared/credentials.js` with your Google client ID and
+secret like so...
+    ```js
+    module.exports = Object.freeze({
+      GOOGLE_CLIENT_ID : '<Your google client id>',
+      GOOGLE_CLIENT_SECRET: '<Your google client secret>'
+    })
+    ```
+4. Follow these [steps](https://cloud.google.com/endpoints/docs/openapi/enable-api#enabling_an_api)
+to enable access to `Gmail API` and `Google+ API` (tip: use the search field to
+find these two libraries).
 
-To create OAuth client ID & secret, under "API Manager", choose "Create Credentials", then "OAuth client ID".
-For "Application type", select "Other", and choose some name for the application, as described in these screenshots:
-
-![Create credentials](https://raw.githubusercontent.com/openWMail/openWMail/master/.github/gdc-create-credentials.png "Create Credentials")
-<br />
-<br />
-![Create OAuth client ID](https://raw.githubusercontent.com/openWMail/openWMail/master/.github/gdc-oauth-client-id-creation.png "Create OAuth Client ID")
-
-Next create `src/shared/credentials.js` with your Google client ID and secret like so...
-
-```js
-module.exports = Object.freeze({
-	GOOGLE_CLIENT_ID : '<Your google client id>',
-	GOOGLE_CLIENT_SECRET: '<Your google client secret>'
-})
-```
+#### Building
 
 Then run the following...
 
@@ -76,9 +71,13 @@ npm rebuild
 npm run-script package
 ```
 
-### Installing from this fork?
+### Installing in arch linux using this fork
 
-Follow the create `OAuth client ID & secret` steps and then run:
+Follow the [Creating credentials](#creating-credentials) steps and then run:
 ```bash
 install/run.sh
 ```
+
+You should be able to open openWMail in terminal typing
+`/opt/openwmail/openWMail` or searching for `openWMAil` at your
+applications menu.
